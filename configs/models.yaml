@@ -1,0 +1,89 @@
+# ProCap Benchmark - Model Configurations
+# ======================================
+#
+# Each model entry specifies:
+#   type: Model adapter type (esm, protbert, ontoprotein)
+#   variant: Model variant/checkpoint
+#   max_batch_size: Maximum batch size for inference
+#   max_sequence_length: Maximum sequence length (will truncate longer)
+#
+# Model types and their tokenization requirements:
+#   - esm: Contiguous sequences (MLKFV)
+#   - protbert: Space-separated (M L K F V)
+#   - ontoprotein: Space-separated (M L K F V)
+
+models:
+
+  # ==========================================================================
+  # ESM-2 Models (Recommended for most tasks)
+  # ==========================================================================
+  # ESM-2 uses contiguous amino acid sequences (no spaces)
+  # Larger models generally perform better but require more GPU memory
+
+  esm2_t6_8M:
+    type: esm
+    variant: esm2_t6_8M
+    max_batch_size: 64
+    max_sequence_length: 1022
+    description: "ESM-2 8M - Fast, lightweight model for quick experiments"
+
+  esm2_t12_35M:
+    type: esm
+    variant: esm2_t12_35M
+    max_batch_size: 32
+    max_sequence_length: 1022
+    description: "ESM-2 35M - Good balance of speed and performance"
+
+  esm2_t30_150M:
+    type: esm
+    variant: esm2_t30_150M
+    max_batch_size: 16
+    max_sequence_length: 1022
+    description: "ESM-2 150M - Strong performance"
+
+  esm2_t33_650M:
+    type: esm
+    variant: esm2_t33_650M
+    max_batch_size: 8
+    max_sequence_length: 1022
+    description: "ESM-2 650M - Recommended default model"
+
+  esm2_t36_3B:
+    type: esm
+    variant: esm2_t36_3B
+    max_batch_size: 4
+    max_sequence_length: 1022
+    description: "ESM-2 3B - Best performance, requires significant GPU memory"
+
+  # ==========================================================================
+  # ProtBERT Models
+  # ==========================================================================
+  # ProtBERT REQUIRES space-separated amino acids
+  # The adapter handles conversion automatically
+
+  protbert:
+    type: protbert
+    variant: prot_bert
+    max_batch_size: 32
+    max_sequence_length: 510
+    description: "ProtBERT - BERT pretrained on UniRef100"
+
+  protbert_bfd:
+    type: protbert
+    variant: prot_bert_bfd
+    max_batch_size: 32
+    max_sequence_length: 510
+    description: "ProtBERT-BFD - BERT pretrained on BFD (larger dataset)"
+
+  # ==========================================================================
+  # OntoProtein
+  # ==========================================================================
+  # OntoProtein uses space-separated amino acids (like ProtBERT)
+  # Incorporates Gene Ontology knowledge into embeddings
+
+  ontoprotein:
+    type: ontoprotein
+    variant: ontoprotein
+    max_batch_size: 32
+    max_sequence_length: 510
+    description: "OntoProtein - BERT with GO knowledge, best for GO tasks"

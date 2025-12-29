@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "num_samples": 200,
+    "train_ratio": 0.8,
+    "batch_size": 8,
+    "seed": 42,
+    "data_path": "./mparsa/bench/procap-v2/data/functional/gobench_remember.csv",
+    "models_tested": 11,
+    "models_succeeded": 11,
+    "models_failed": 0
+  },
+  "results": {
+    "esm2_t6_8M": {
+      "f1_max": 0.22443890274314215,
+      "auprc_micro": 0.1137341320371955
+    },
+    "esm2_t12_35M": {
+      "f1_max": 0.17886178861788618,
+      "auprc_micro": 0.07789835135535166
+    },
+    "esm2_t30_150M": {
+      "f1_max": 0.19791666666666666,
+      "auprc_micro": 0.08903510057911858
+    },
+    "esm2_t33_650M": {
+      "f1_max": 0.2407079646017699,
+      "auprc_micro": 0.16528308624003996
+    },
+    "esm1b_t33_650M": {
+      "f1_max": 0.1945031712473573,
+      "auprc_micro": 0.12490137392623946
+    },
+    "protbert": {
+      "f1_max": 0.2421875,
+      "auprc_micro": 0.14417141918924975
+    },
+    "protbert_bfd": {
+      "f1_max": 0.25790754257907544,
+      "auprc_micro": 0.13089015772972137
+    },
+    "ontoprotein": {
+      "f1_max": 0.23678646934460887,
+      "auprc_micro": 0.13887371037210355
+    },
+    "prott5_xl_bfd": {
+      "f1_max": 0.29683698296836986,
+      "auprc_micro": 0.18011588993556987
+    },
+    "ankh_base": {
+      "f1_max": 0.21008403361344538,
+      "auprc_micro": 0.09185632264779259
+    },
+    "prot_albert": {
+      "f1_max": 0.22157434402332363,
+      "auprc_micro": 0.08970137542721941
+    }
+  },
+  "timing": {
+    "esm2_t6_8M": {
+      "elapsed_seconds": 174.07588005065918,
+      "elapsed_minutes": 2.9012646675109863
+    },
+    "esm2_t12_35M": {
+      "elapsed_seconds": 35.326154708862305,
+      "elapsed_minutes": 0.5887692451477051
+    },
+    "esm2_t30_150M": {
+      "elapsed_seconds": 40.97279214859009,
+      "elapsed_minutes": 0.6828798691431681
+    },
+    "esm2_t33_650M": {
+      "elapsed_seconds": 148.69585633277893,
+      "elapsed_minutes": 2.478264272212982
+    },
+    "esm1b_t33_650M": {
+      "elapsed_seconds": 241.31507182121277,
+      "elapsed_minutes": 4.0219178636868795
+    },
+    "protbert": {
+      "elapsed_seconds": 192.14999294281006,
+      "elapsed_minutes": 3.2024998823801676
+    },
+    "protbert_bfd": {
+      "elapsed_seconds": 191.05145239830017,
+      "elapsed_minutes": 3.184190873305003
+    },
+    "ontoprotein": {
+      "elapsed_seconds": 303.97255873680115,
+      "elapsed_minutes": 5.066209312280019
+    },
+    "prott5_xl_bfd": {
+      "elapsed_seconds": 203.3722836971283,
+      "elapsed_minutes": 3.389538061618805
+    },
+    "ankh_base": {
+      "elapsed_seconds": 60.250383615493774,
+      "elapsed_minutes": 1.0041730602582295
+    },
+    "prot_albert": {
+      "elapsed_seconds": 255.93651485443115,
+      "elapsed_minutes": 4.265608580907186
+    }
+  }
+}

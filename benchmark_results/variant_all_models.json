@@ -1,0 +1,92 @@
+{
+  "esm2_t6_8M": {
+    "spearman": 0.1658847843055629,
+    "pearson": 0.580127689638642,
+    "rmse": 4305.093221425174,
+    "mae": 1024.5460007447175,
+    "r2": 0.1993764804069239
+  },
+  "esm2_t12_35M": {
+    "spearman": -0.11868549832948687,
+    "pearson": 0.13630177730772378,
+    "rmse": 911.6789094391563,
+    "mae": 458.21837315382584,
+    "r2": -151855.45429244734
+  },
+  "esm2_t30_150M": {
+    "spearman": 0.19699812382739215,
+    "pearson": 0.765259089996086,
+    "rmse": 1812.4262123392573,
+    "mae": 904.0728624399064,
+    "r2": 0.5771832755690789
+  },
+  "esm2_t33_650M": {
+    "spearman": 0.1062112985485844,
+    "pearson": -0.027014473340675915,
+    "rmse": 783.0273016236375,
+    "mae": 417.87906961006604,
+    "r2": -165258.25897053565
+  },
+  "esm1b_t33_650M": {
+    "spearman": -0.14390243902439023,
+    "pearson": -0.21632085068631862,
+    "rmse": 1080.747577457068,
+    "mae": 522.7886837101171,
+    "r2": -290971.38234146516
+  },
+  "esm1v_t33_650M_1": {
+    "spearman": 0.09774859287054409,
+    "pearson": 0.23354610659584968,
+    "rmse": 4583.815823612206,
+    "mae": 1281.4705963661713,
+    "r2": 0.039356689721673055
+  },
+  "protbert": {
+    "spearman": 0.38737217545465163,
+    "pearson": 0.6176060628359772,
+    "rmse": 1795.4278938371194,
+    "mae": 612.2069473429574,
+    "r2": -0.07473255719284988
+  },
+  "protbert_bfd": {
+    "spearman": 0.09587691740928872,
+    "pearson": 0.504622016008801,
+    "rmse": 4279.727140841291,
+    "mae": 1010.8813688465822,
+    "r2": 0.16257038467520624
+  },
+  "ontoprotein": {
+    "spearman": -0.09381303073315922,
+    "pearson": 0.15513800348215123,
+    "rmse": 1893.095941842596,
+    "mae": 813.1369301693095,
+    "r2": -1.0484835565331783
+  },
+  "prott5_xl_bfd": {
+    "spearman": 0.10712945590994372,
+    "pearson": 0.7008802983399774,
+    "rmse": 1174.9400030240179,
+    "mae": 653.7098617370399,
+    "r2": 0.12529345839854844
+  },
+  "ankh_base": {
+    "spearman": 0.288167406782434,
+    "pearson": 0.32706539655529976,
+    "rmse": 1334.5583171840447,
+    "mae": 731.1503822472365,
+    "r2": 0.054514022505606996
+  },
+  "prot_albert": {
+    "spearman": -0.24372625384474766,
+    "pearson": 0.05905803812853036,
+    "rmse": 723.556160461922,
+    "mae": 324.26209974588676,
+    "r2": -153427.54707411176
+  },
+  "progen2_small": {
+    "error": "'ProGenConfig' object has no attribute 'num_hidden_layers'"
+  },
+  "protgpt2": {
+    "error": "CUDA error: device-side assert triggered\nSearch for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"
+  }
+}

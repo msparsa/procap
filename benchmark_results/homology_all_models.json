@@ -1,0 +1,52 @@
+{
+  "esm2_t6_8M": {
+    "accuracy": 0.3684210526315789,
+    "f1_macro": 0.18939393939393936
+  },
+  "esm2_t12_35M": {
+    "accuracy": 0.5238095238095238,
+    "f1_macro": 0.42857142857142855
+  },
+  "esm2_t30_150M": {
+    "accuracy": 0.2777777777777778,
+    "f1_macro": 0.14666666666666664
+  },
+  "esm2_t33_650M": {
+    "accuracy": 0.25925925925925924,
+    "f1_macro": 0.16666666666666666
+  },
+  "esm1b_t33_650M": {
+    "accuracy": 0.5454545454545454,
+    "f1_macro": 0.38888888888888884
+  },
+  "protbert": {
+    "accuracy": 0.15,
+    "f1_macro": 0.08333333333333333
+  },
+  "protbert_bfd": {
+    "accuracy": 0.3333333333333333,
+    "f1_macro": 0.19298245614035087
+  },
+  "ontoprotein": {
+    "accuracy": 0.0,
+    "f1_macro": 0.0
+  },
+  "prott5_xl_bfd": {
+    "accuracy": 0.45,
+    "f1_macro": 0.3
+  },
+  "ankh_base": {
+    "accuracy": 0.07142857142857142,
+    "f1_macro": 0.023529411764705882
+  },
+  "prot_albert": {
+    "accuracy": 0.3888888888888889,
+    "f1_macro": 0.25
+  },
+  "progen2_small": {
+    "error": "'ProGenConfig' object has no attribute 'num_hidden_layers'"
+  },
+  "protgpt2": {
+    "error": "CUDA error: device-side assert triggered\nSearch for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"
+  }
+}

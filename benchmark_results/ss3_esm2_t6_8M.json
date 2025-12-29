@@ -1,0 +1,14 @@
+{
+  "model": "esm2_t6_8M",
+  "task": "secondary_structure_ss3",
+  "num_samples": 200,
+  "train_ratio": 0.8,
+  "seed": 42,
+  "metrics": {
+    "accuracy": 0.7627239124253625,
+    "f1_macro": 0.7398078891287513,
+    "accuracy_H": 0.8212377176348905,
+    "accuracy_E": 0.5866346538615446,
+    "accuracy_C": 0.7801664355062413
+  }
+}

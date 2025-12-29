@@ -1,0 +1,207 @@
+# ProCap Benchmark - Task Configurations
+# ======================================
+#
+# Tasks organized by Bloom's Taxonomy levels:
+#   1. Remembering - Recall/identify known information
+#   2. Understanding - Explain/interpret meaning
+#   3. Applying - Use knowledge in new situations
+#   4. Analysis - Examine and break down information
+#   5. Evaluation - Judge/assess quality
+#   6. Creating - Generate new ideas/products
+
+tasks:
+
+  # ==========================================================================
+  # REMEMBERING - Bloom Level 1
+  # ==========================================================================
+
+  - name: go_term_identification
+    bloom_level: Remembering
+    domain: Functional Annotation
+    description: >
+      Identify Gene Ontology (GO) terms for proteins from their amino acid
+      sequence. Tests the model's ability to recall known functional annotations.
+    task_type: multilabel_classification
+    dataset_path: data/functional/gobench_remember.csv
+    input_fields: [sequence]
+    target_field: go_terms
+    metrics: [f1_max, auprc_micro, auroc_micro]
+    compatible_models: [esm2_t33_650M, protbert, ontoprotein, prott5_xl_bfd, ankh_base, prot_albert]
+    batch_size: 16
+
+  - name: family_classification
+    bloom_level: Remembering
+    domain: Evolutionary
+    description: >
+      Classify proteins into their protein families based on sequence.
+      Tests the model's ability to recognize conserved family patterns.
+    task_type: multiclass_classification
+    dataset_path: data/functional/family_classification.csv
+    input_fields: [sequence]
+    target_field: family
+    metrics: [accuracy, f1_macro]
+    compatible_models: [esm2_t33_650M, protbert, ontoprotein, prott5_xl_bfd, ankh_base, prot_albert]
+    batch_size: 16
+
+  # ==========================================================================
+  # UNDERSTANDING - Bloom Level 2
+  # ==========================================================================
+
+  - name: function_explanation
+    bloom_level: Understanding
+    domain: Functional Annotation
+    description: >
+      Generate a free-text description of protein function from sequence.
+      Tests the model's ability to explain functional roles.
+    task_type: text_generation
+    dataset_path: data/functional/gobench_understand.csv
+    input_fields: [sequence]
+    target_field: function_text
+    metrics: [rougeL, bertscore, novelty_50]
+    compatible_models: [progen2_small, progen2_medium, zymctrl]
+    batch_size: 8
+
+  # ==========================================================================
+  # APPLYING - Bloom Level 3
+  # ==========================================================================
+
+  - name: go_term_prediction
+    bloom_level: Applying
+    domain: Functional Annotation
+    description: >
+      Predict GO terms for unannotated proteins. Tests the model's ability
+      to apply learned patterns to novel sequences.
+    task_type: multilabel_classification
+    dataset_path: data/functional/gobench_apply.csv
+    input_fields: [sequence]
+    target_field: go_terms
+    metrics: [f1_max, auprc_micro]
+    compatible_models: [esm2_t33_650M, protbert, ontoprotein, prott5_xl_bfd, ankh_base, prot_albert]
+    batch_size: 16
+
+  # ==========================================================================
+  # ANALYSIS - Bloom Level 4
+  # ==========================================================================
+
+  - name: variant_effect_prediction
+    bloom_level: Analysis
+    domain: Functional Annotation
+    description: >
+      Predict the functional effect of sequence variants (mutations).
+      Tests the model's ability to analyze sequence-function relationships.
+    task_type: regression
+    dataset_path: data/variant_effect/proteingym_substitutions.csv
+    input_fields: [sequence, variant]
+    target_field: effect_score
+    metrics: [spearman, rmse]
+    compatible_models: [esm2_t33_650M, esm1v_t33_650M_1, protbert, prott5_xl_bfd]
+    batch_size: 16
+
+  # ==========================================================================
+  # EVALUATION - Bloom Level 5
+  # ==========================================================================
+
+  - name: annotation_validation
+    bloom_level: Evaluation
+    domain: Functional Annotation
+    description: >
+      Validate predicted GO annotations against experimental evidence.
+      Tests the model's ability to assess annotation quality.
+    task_type: multilabel_classification
+    dataset_path: data/functional/peer_eval.csv
+    input_fields: [sequence]
+    target_field: go_terms
+    metrics: [precision_micro, recall_micro, f1_max]
+    compatible_models: [esm2_t33_650M, protbert, ontoprotein, prott5_xl_bfd, ankh_base, prot_albert]
+    batch_size: 16
+
+  # ==========================================================================
+  # CREATING - Bloom Level 6
+  # ==========================================================================
+
+  - name: novel_function_generation
+    bloom_level: Creating
+    domain: Functional Annotation
+    description: >
+      Generate novel functional categories or annotations for proteins.
+      Tests the model's creative ability to propose new functions.
+    task_type: text_generation
+    dataset_path: data/functional/gobench_create.csv
+    input_fields: [sequence]
+    target_field: new_category_text
+    metrics: [novelty_50, diversity]
+    compatible_models: [progen2_small, progen2_medium, zymctrl]
+    batch_size: 8
+
+  # ==========================================================================
+  # SEQUENCE GENERATION - Specialized Tasks
+  # ==========================================================================
+
+  - name: enzyme_sequence_generation
+    bloom_level: Creating
+    domain: Protein Design
+    description: >
+      Generate enzyme sequences conditioned on EC numbers.
+      Tests the model's ability to design functional enzyme sequences.
+    task_type: sequence_generation
+    dataset_path: data/functional/gobench_create.csv
+    input_fields: [sequence]
+    target_field: sequence
+    metrics: [seq_identity, diversity]
+    compatible_models: [zymctrl, progen2_small, progen2_medium]
+    batch_size: 4
+
+  # ==========================================================================
+  # STRUCTURAL TASKS
+  # ==========================================================================
+
+  - name: secondary_structure_ss3
+    bloom_level: Understanding
+    domain: Structure
+    description: >
+      Predict 3-state secondary structure (helix, strand, coil) for each
+      residue. Tests the model's understanding of local structure patterns.
+    task_type: token_classification
+    dataset_path: data/structure/secondary_structure_ss3.csv
+    input_fields: [sequence]
+    target_field: ss3_labels
+    metrics: [accuracy, f1_macro]
+    compatible_models: [esm2_t33_650M, protbert, prott5_xl_bfd, ankh_base]
+    batch_size: 8
+    num_labels: 3
+
+  # ==========================================================================
+  # EVOLUTIONARY / HOMOLOGY TASKS
+  # ==========================================================================
+
+  - name: remote_homology
+    bloom_level: Analysis
+    domain: Evolutionary
+    description: >
+      Classify proteins into SCOP superfamilies based on structural homology.
+      Tests the model's ability to detect remote evolutionary relationships.
+    task_type: multiclass_classification
+    dataset_path: data/homology/remote_homology.csv
+    input_fields: [sequence]
+    target_field: superfamily
+    metrics: [accuracy, f1_macro]
+    compatible_models: [esm2_t33_650M, protbert, prott5_xl_bfd, ankh_base]
+    batch_size: 16
+
+  # ==========================================================================
+  # PROTEIN-PROTEIN INTERACTION TASKS
+  # ==========================================================================
+
+  - name: ppi_prediction
+    bloom_level: Analysis
+    domain: Interaction
+    description: >
+      Predict whether two proteins physically interact based on their sequences.
+      Tests the model's ability to capture interaction patterns.
+    task_type: ppi_classification
+    dataset_path: data/interaction/ppi_prediction.csv
+    input_fields: [sequence_a, sequence_b]
+    target_field: interaction
+    metrics: [auroc, auprc, accuracy, f1]
+    compatible_models: [esm2_t33_650M, protbert, prott5_xl_bfd]
+    batch_size: 8

@@ -1,0 +1,109 @@
+{
+  "task": "ppi_prediction",
+  "configuration": {
+    "n_samples": 200,
+    "train_ratio": 0.8,
+    "batch_size": 8,
+    "seed": 42,
+    "combination": "combined"
+  },
+  "data_statistics": {
+    "n_positive": 105,
+    "n_negative": 95
+  },
+  "models_tested": [
+    "esm2_t6_8M",
+    "esm2_t12_35M",
+    "esm2_t30_150M",
+    "esm2_t33_650M",
+    "esm1b_t33_650M",
+    "protbert",
+    "protbert_bfd",
+    "ontoprotein",
+    "prott5_xl_bfd",
+    "ankh_base",
+    "prot_albert"
+  ],
+  "successful_models": [
+    "esm2_t6_8M",
+    "esm2_t12_35M",
+    "esm2_t30_150M",
+    "esm2_t33_650M",
+    "esm1b_t33_650M",
+    "protbert",
+    "protbert_bfd",
+    "ontoprotein",
+    "prott5_xl_bfd",
+    "ankh_base",
+    "prot_albert"
+  ],
+  "failed_models": [],
+  "results": {
+    "esm2_t6_8M": {
+      "auroc": 0.6214833759590792,
+      "auprc": 0.6870956421173513,
+      "accuracy": 0.55,
+      "f1": 0.6086956521739131
+    },
+    "esm2_t12_35M": {
+      "auroc": 0.6640625,
+      "auprc": 0.7956408334097962,
+      "accuracy": 0.625,
+      "f1": 0.6341463414634146
+    },
+    "esm2_t30_150M": {
+      "auroc": 0.7417582417582418,
+      "auprc": 0.8708994105990517,
+      "accuracy": 0.675,
+      "f1": 0.7450980392156863
+    },
+    "esm2_t33_650M": {
+      "auroc": 0.6533333333333333,
+      "auprc": 0.6218946855379492,
+      "accuracy": 0.575,
+      "f1": 0.5405405405405406
+    },
+    "esm1b_t33_650M": {
+      "auroc": 0.5833333333333334,
+      "auprc": 0.608544619095335,
+      "accuracy": 0.575,
+      "f1": 0.5853658536585366
+    },
+    "protbert": {
+      "auroc": 0.605,
+      "auprc": 0.6957220774522206,
+      "accuracy": 0.6,
+      "f1": 0.5789473684210527
+    },
+    "protbert_bfd": {
+      "auroc": 0.6262626262626262,
+      "auprc": 0.7602457092679813,
+      "accuracy": 0.575,
+      "f1": 0.6046511627906976
+    },
+    "ontoprotein": {
+      "auroc": 0.7033248081841432,
+      "auprc": 0.80130126428215,
+      "accuracy": 0.625,
+      "f1": 0.6938775510204082
+    },
+    "prott5_xl_bfd": {
+      "auroc": 0.6854219948849104,
+      "auprc": 0.763449660934181,
+      "accuracy": 0.7,
+      "f1": 0.7391304347826086
+    },
+    "ankh_base": {
+      "auroc": 0.45202020202020204,
+      "auprc": 0.5114887444700278,
+      "accuracy": 0.525,
+      "f1": 0.6415094339622641
+    },
+    "prot_albert": {
+      "auroc": 0.5075,
+      "auprc": 0.6039860390875674,
+      "accuracy": 0.5,
+      "f1": 0.5454545454545454
+    }
+  }
+}

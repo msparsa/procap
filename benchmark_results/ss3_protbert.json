@@ -1,0 +1,14 @@
+{
+  "model": "protbert",
+  "task": "secondary_structure_ss3",
+  "num_samples": 200,
+  "train_ratio": 0.8,
+  "seed": 42,
+  "metrics": {
+    "accuracy": 0.7345749218083594,
+    "f1_macro": 0.7150902575766546,
+    "accuracy_H": 0.8272711601448026,
+    "accuracy_E": 0.5714285714285714,
+    "accuracy_C": 0.7120319001386962
+  }
+}

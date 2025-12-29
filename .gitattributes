@@ -1,0 +1,8 @@
+# Git LFS tracking for large files
+# Install git-lfs: https://git-lfs.github.com/
+
+# Track large data files (>50MB)
+data/interaction/ppi_prediction.csv filter=lfs diff=lfs merge=lfs -text
+
+# Track any future large CSV files
+data/**/*.large.csv filter=lfs diff=lfs merge=lfs -text

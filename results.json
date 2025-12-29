@@ -1,0 +1,13 @@
+{
+  "model": "esm2_t6_8M",
+  "task": "remote_homology",
+  "metrics": {
+    "accuracy": 0.02,
+    "f1_macro": 0.0020639834881320948
+  },
+  "config": {
+    "batch_size": 8,
+    "max_samples": 50,
+    "data_path": "data/homology/remote_homology.csv"
+  }
+}

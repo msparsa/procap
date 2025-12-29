@@ -1,0 +1,61 @@
+{
+  "config": {
+    "num_samples": 200,
+    "train_ratio": 0.8,
+    "batch_size": 16,
+    "seed": 42,
+    "models_tested": [
+      "esm2_t6_8M",
+      "esm2_t12_35M",
+      "esm2_t33_650M",
+      "protbert",
+      "protbert_bfd",
+      "ankh_base"
+    ],
+    "failed_models": []
+  },
+  "results": {
+    "esm2_t6_8M": {
+      "accuracy": 0.7627239124253625,
+      "f1_macro": 0.7398078891287513,
+      "accuracy_H": 0.8212377176348905,
+      "accuracy_E": 0.5866346538615446,
+      "accuracy_C": 0.7801664355062413
+    },
+    "esm2_t12_35M": {
+      "accuracy": 0.8082172305942564,
+      "f1_macro": 0.7953542050694279,
+      "accuracy_H": 0.8546802275469747,
+      "accuracy_E": 0.7098839535814325,
+      "accuracy_C": 0.8040915395284327
+    },
+    "esm2_t33_650M": {
+      "accuracy": 0.8653682115439295,
+      "f1_macro": 0.8573546504009893,
+      "accuracy_H": 0.8998448543354594,
+      "accuracy_E": 0.7995198079231692,
+      "accuracy_C": 0.8592233009708737
+    },
+    "protbert": {
+      "accuracy": 0.7345749218083594,
+      "f1_macro": 0.7150902575766546,
+      "accuracy_H": 0.8272711601448026,
+      "accuracy_E": 0.5714285714285714,
+      "accuracy_C": 0.7120319001386962
+    },
+    "protbert_bfd": {
+      "accuracy": 0.7826983224338925,
+      "f1_macro": 0.7679870545496518,
+      "accuracy_H": 0.8572659886226512,
+      "accuracy_E": 0.6618647458983593,
+      "accuracy_C": 0.7600554785020804
+    },
+    "ankh_base": {
+      "accuracy": 0.4595535968154677,
+      "f1_macro": 0.3418243263636456,
+      "accuracy_H": 0.5700741251508361,
+      "accuracy_E": 0.008003201280512205,
+      "accuracy_C": 0.5440360610263523
+    }
+  }
+}

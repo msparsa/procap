@@ -1,0 +1,103 @@
+# ProCap-v2 Data Sources Configuration
+#
+# This file documents external data sources used in ProCap benchmarks.
+# Most processed datasets are included in the repository.
+# Only very large files (>100MB) need to be downloaded separately.
+
+data_sources:
+  # === VARIANT EFFECT DATA ===
+  variant_effect:
+    name: ProteinGym DMS Substitutions
+    url: https://marks.hms.harvard.edu/proteingym/
+    direct_download: https://marks.hms.harvard.edu/proteingym/DMS_substitutions.csv
+    description: |
+      Deep Mutational Scanning (DMS) substitution data from ProteinGym.
+      Contains fitness scores for single amino acid substitutions.
+      Size: ~2GB with 2.4M+ rows.
+    local_path: data/variant_effect/proteingym_substitutions.csv
+    size: "2.0GB"
+    included_in_repo: false
+    citation: |
+      Notin, P., et al. (2023). ProteinGym: Large-Scale Benchmarks for Protein
+      Design and Fitness Prediction. NeurIPS 2023 Datasets and Benchmarks Track.
+
+  # === PROTEIN-PROTEIN INTERACTION DATA ===
+  ppi:
+    name: STRING Database v12.0
+    url: https://string-db.org/cgi/download
+    description: |
+      Protein-protein interaction data from STRING database.
+      Filtered for high-confidence human interactions (score >= 700).
+      Processed dataset included in repo.
+    local_path: data/interaction/ppi_prediction.csv
+    size: "53MB"
+    included_in_repo: true
+    citation: |
+      Szklarczyk, D., et al. (2023). The STRING database in 2023: protein-protein
+      association networks. Nucleic Acids Research, 51(D1), D599-D606.
+
+  # === STRUCTURE DATA ===
+  alphafold_structures:
+    name: AlphaFold Protein Structure Database
+    url: https://alphafold.ebi.ac.uk/download
+    description: |
+      Predicted protein structures from AlphaFold.
+      Used for extracting sequences and secondary structure annotations.
+      Not included in repo - only needed for data processing.
+    included_in_repo: false
+    citation: |
+      Jumper, J., et al. (2021). Highly accurate protein structure prediction
+      with AlphaFold. Nature, 596(7873), 583-589.
+
+  # === HOMOLOGY DATA ===
+  scop_classification:
+    name: SCOP Database
+    url: https://scop.berkeley.edu/downloads/
+    description: |
+      Structural Classification of Proteins (SCOP) database.
+      Used for remote homology detection task.
+      Processed dataset included in repo.
+    local_path: data/homology/remote_homology.csv
+    size: "8.9MB"
+    included_in_repo: true
+    citation: |
+      Chandonia, J.M., et al. (2022). SCOPe: improvements to the structural
+      classification of proteins - extended database. NAR, 50(D1), D291-D297.
+
+  # === FUNCTIONAL ANNOTATION DATA ===
+  gene_ontology:
+    name: Gene Ontology
+    url: http://geneontology.org/docs/download-go-annotations/
+    description: |
+      Gene Ontology functional annotations.
+      Used for GO term prediction tasks.
+      Processed datasets included in repo.
+    local_path: data/functional/gobench_remember.csv
+    size: "20MB"
+    included_in_repo: true
+    citation: |
+      Gene Ontology Consortium. (2023). The Gene Ontology knowledgebase in 2023.
+      Genetics, 224(1), iyad031.
+
+  # === FAMILY CLASSIFICATION DATA ===
+  pfam:
+    name: Pfam Database
+    url: https://www.ebi.ac.uk/interpro/download/Pfam/
+    description: |
+      Protein family classifications from Pfam.
+      Used for family classification task.
+      Processed dataset included in repo.
+    local_path: data/functional/family_classification.csv
+    size: "3.5MB"
+    included_in_repo: true
+    citation: |
+      Mistry, J., et al. (2021). Pfam: The protein families database in 2021.
+      Nucleic Acids Research, 49(D1), D412-D419.
+
+# === DOWNLOAD INSTRUCTIONS ===
+#
+# For data files NOT included in the repository, run:
+#   python scripts/download_data.py
+#
+# This will download the ProteinGym substitutions file (~2GB).
+# Ensure you have sufficient disk space before downloading.

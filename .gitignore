@@ -1,0 +1,76 @@
+# ProCap-v2 .gitignore
+
+# === LARGE DATA FILES (download separately) ===
+# ProteinGym substitutions file is ~2GB - use scripts/download_data.py
+data/variant_effect/proteingym_substitutions.csv
+
+# === PAPER MATERIALS (separate repository) ===
+paper/
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/
+ENV/
+env/
+.venv/
+
+# === CACHED MODELS AND EMBEDDINGS ===
+*.pt
+*.bin
+*.ckpt
+.cache/
+huggingface/
+
+# === IDE AND EDITORS ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# === JUPYTER ===
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# === TESTING ===
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# === MISC ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.temp
+
+# === LOCAL CONFIG ===
+.env
+.env.local
+secrets.yaml
