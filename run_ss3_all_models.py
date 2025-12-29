@@ -18,7 +18,7 @@ from procap.tasks.schemas import TaskConfig, BloomLevel, TaskType
 from procap.models.registry import get_model
 
 # Configuration
-NUM_SAMPLES = 200
+NUM_SAMPLES = None  # Use full dataset (set to integer to limit samples)
 SEED = 42
 TRAIN_RATIO = 0.8
 BATCH_SIZE = 16
@@ -37,7 +37,7 @@ print("="*70)
 print("SS3 SECONDARY STRUCTURE BENCHMARK - ALL MODELS")
 print("="*70)
 print(f"Configuration:")
-print(f"  Samples: {NUM_SAMPLES}")
+print(f"  Samples: {'Full dataset' if NUM_SAMPLES is None else NUM_SAMPLES}")
 print(f"  Train ratio: {TRAIN_RATIO}")
 print(f"  Batch size: {BATCH_SIZE}")
 print(f"  Random seed: {SEED}")
@@ -49,9 +49,12 @@ data_path = './mparsa/bench/procap-v2/data/structure/secondary_structure_ss3.csv
 df = pd.read_csv(data_path)
 print(f"\nLoaded {len(df)} total samples from dataset")
 
-# Use specified number of samples
-df = df.head(NUM_SAMPLES)
-print(f"Using {len(df)} samples for benchmark")
+# Use specified number of samples (or full dataset if NUM_SAMPLES is None)
+if NUM_SAMPLES is not None:
+    df = df.head(NUM_SAMPLES)
+    print(f"Using {NUM_SAMPLES} samples for benchmark")
+else:
+    print(f"Using full dataset: {len(df)} samples for benchmark")
 
 # Task config
 task_config = TaskConfig(

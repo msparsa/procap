@@ -66,7 +66,7 @@ def main():
     # Configuration
     data_path = "data/interaction/ppi_prediction.csv"
     output_path = "benchmark_results/ppi_all_models.json"
-    n_samples = 200
+    n_samples = None  # Use full dataset (set to integer to limit samples)
     train_ratio = 0.8
     batch_size = 8
     seed = 42
@@ -101,9 +101,13 @@ def main():
     df = pd.read_csv(data_path)
     print(f"Total dataset size: {len(df)} samples")
 
-    # Sample data
-    print(f"Sampling {n_samples} samples with seed {seed}...")
-    df_sample = df.sample(n=n_samples, random_state=seed).reset_index(drop=True)
+    # Sample data (or use full dataset if n_samples is None)
+    if n_samples is not None:
+        print(f"Sampling {n_samples} samples with seed {seed}...")
+        df_sample = df.sample(n=n_samples, random_state=seed).reset_index(drop=True)
+    else:
+        print(f"Using full dataset: {len(df)} samples")
+        df_sample = df
 
     # Check class balance
     n_positive = (df_sample['interaction'] == 1).sum()
@@ -147,7 +151,7 @@ def main():
             )
 
             # Run evaluation
-            print(f"\nRunning evaluation on {n_samples} samples...")
+            print(f"\nRunning evaluation on {len(df_sample)} samples...")
             metrics = runner.run(df_sample)
 
             # Store results
@@ -207,7 +211,7 @@ def main():
     print("=" * 80)
 
     print(f"\nTask: {task.name}")
-    print(f"Samples: {n_samples} ({n_positive} positive, {n_negative} negative)")
+    print(f"Samples: {len(df_sample)} ({n_positive} positive, {n_negative} negative)")
     print(f"Train/Test Split: {train_ratio:.0%} / {(1-train_ratio):.0%}")
     print(f"Batch Size: {batch_size}")
     print(f"Seed: {seed}")

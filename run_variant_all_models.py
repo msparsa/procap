@@ -53,7 +53,7 @@ def main():
     ]
 
     # Number of samples
-    n_samples = 200
+    n_samples = None  # Use full dataset (set to integer to limit samples)
 
     # Hyperparameters
     train_ratio = 0.8
@@ -64,7 +64,7 @@ def main():
     print("COMPREHENSIVE VARIANT EFFECT PREDICTION BENCHMARK")
     print("="*80)
     print(f"Models to test: {len(model_names)}")
-    print(f"Samples: {n_samples}")
+    print(f"Samples: {'Full dataset' if n_samples is None else n_samples}")
     print(f"Train ratio: {train_ratio}")
     print(f"Batch size: {batch_size}")
     print(f"Random seed: {seed}")
@@ -73,10 +73,12 @@ def main():
     print(f"\nLoading data from {data_path}")
     df = pd.read_csv(data_path)
 
-    # Sample the data
-    if len(df) > n_samples:
+    # Sample the data (or use full dataset if n_samples is None)
+    if n_samples is not None and len(df) > n_samples:
         df = df.sample(n=n_samples, random_state=seed).reset_index(drop=True)
         print(f"Sampled {n_samples} variants from dataset")
+    else:
+        print(f"Using full dataset: {len(df)} variants for benchmark")
 
     print(f"Data shape: {df.shape}")
     print(f"Columns: {df.columns.tolist()}")
@@ -160,7 +162,7 @@ def main():
     print("BENCHMARK SUMMARY")
     print("="*80)
     print(f"Dataset: {data_path}")
-    print(f"Samples: {n_samples}")
+    print(f"Samples: {len(df)}")
     print(f"Train ratio: {train_ratio}")
     print(f"Batch size: {batch_size}")
     print(f"Random seed: {seed}")

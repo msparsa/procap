@@ -48,7 +48,7 @@ def main():
     # Configuration
     data_path = Path("./mparsa/bench/procap-v2/data/functional/gobench_remember.csv")
     output_path = Path("./mparsa/bench/procap-v2/benchmark_results/go_all_models.json")
-    num_samples = 200
+    num_samples = None  # Use full dataset (set to integer to limit samples)
     train_ratio = 0.8
     batch_size = 8
     seed = 42
@@ -82,7 +82,7 @@ def main():
     print("GO Term Prediction Benchmark - ALL MODELS")
     print("=" * 80)
     print(f"Data: {data_path}")
-    print(f"Number of samples: {num_samples}")
+    print(f"Number of samples: {'Full dataset' if num_samples is None else num_samples}")
     print(f"Train ratio: {train_ratio}")
     print(f"Batch size: {batch_size}")
     print(f"Random seed: {seed}")
@@ -96,10 +96,12 @@ def main():
     df = pd.read_csv(data_path)
     print(f"Total samples in dataset: {len(df)}")
 
-    # Sample data for benchmark
-    if len(df) > num_samples:
+    # Sample data for benchmark (or use full dataset if num_samples is None)
+    if num_samples is not None and len(df) > num_samples:
         df = df.sample(n=num_samples, random_state=seed).reset_index(drop=True)
         print(f"Sampled {num_samples} samples for benchmark")
+    else:
+        print(f"Using full dataset: {len(df)} samples for benchmark")
     print()
 
     # Create task configuration

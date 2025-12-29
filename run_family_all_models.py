@@ -26,7 +26,7 @@ def main():
     # Configuration
     data_path = Path("./mparsa/bench/procap-v2/data/functional/family_classification.csv")
     output_path = Path("./mparsa/bench/procap-v2/benchmark_results/family_all_models.json")
-    num_samples = 200
+    num_samples = None  # Use full dataset (set to integer to limit samples)
 
     # All available models from the registry
     models_to_test = [
@@ -49,7 +49,7 @@ def main():
     print("Protein Family Classification Benchmark - ALL MODELS")
     print("=" * 80)
     print(f"Data: {data_path}")
-    print(f"Number of samples: {num_samples}")
+    print(f"Number of samples: {'Full dataset' if num_samples is None else num_samples}")
     print(f"Number of models to test: {len(models_to_test)}")
     print(f"Models: {', '.join(models_to_test)}")
     print(f"Random seed: 42")
@@ -75,10 +75,12 @@ def main():
         print(f"  {family}: {count}")
     print()
 
-    # Sample data for quicker run
-    if len(df) > num_samples:
+    # Sample data for quicker run (or use full dataset if num_samples is None)
+    if num_samples is not None and len(df) > num_samples:
         df = df.sample(n=num_samples, random_state=42).reset_index(drop=True)
         print(f"Sampled {num_samples} samples for benchmark")
+    else:
+        print(f"Using full dataset: {len(df)} samples for benchmark")
     print()
 
     # Create task configuration
