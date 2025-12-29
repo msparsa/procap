@@ -25,7 +25,7 @@ def main():
 
     # Configuration
     data_path = Path("./mparsa/bench/procap-v2/data/variant_effect/proteingym_substitutions.csv")
-    output_path = Path("/mnt/lareaulab/mparsa/bench/procap-v2/benchmark_results/variant_all_models.json")
+    output_path = Path("./mparsa/bench/procap-v2/benchmark_results/variant_all_models.json")
 
     # Create output directory if it doesn't exist
     output_path.parent.mkdir(parents=True, exist_ok=True)
