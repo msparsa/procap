@@ -24,7 +24,7 @@ data_sources:
   # === PROTEIN-PROTEIN INTERACTION DATA ===
   ppi:
     name: STRING Database v12.0
-    url: https://string-db.org/cgi/download
+    url: https://stringdb-downloads.org/download/protein.physical.links.full.v12.0.txt.gz
     description: |
       Protein-protein interaction data from STRING database.
       Filtered for high-confidence human interactions (score >= 700).
@@ -39,7 +39,7 @@ data_sources:
   # === STRUCTURE DATA ===
   alphafold_structures:
     name: AlphaFold Protein Structure Database
-    url: https://alphafold.ebi.ac.uk/download
+    url: https://ftp.ebi.ac.uk/pub/databases/alphafold/latest/swissprot_pdb_v6.tar
     description: |
       Predicted protein structures from AlphaFold.
       Used for extracting sequences and secondary structure annotations.
